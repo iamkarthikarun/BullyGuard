@@ -1,32 +1,38 @@
-import onnxruntime as ort
+from typing import Dict, Tuple, Union
+
 import numpy as np
+import onnxruntime as ort
+from huggingface_hub import hf_hub_download
 from transformers import AutoTokenizer
-from typing import Tuple, Dict, Union
-import os
-# from pathlib import Path
 
 class ToxicityPredictor:
-    def __init__(self, model_path: str, cache_size: int = 1000):
-        """
-        Initialize the toxicity prediction model with ONNX runtime.
-        
+    """Predicts toxicity in text using ONNX model from Hugging Face."""
+
+    def __init__(self, cache_size: int = 1000) -> None:
+        """Initialize toxicity prediction model from Hugging Face.
+
         Args:
-            model_path: Path to the ONNX model file
-            cache_size: Number of recent predictions to cache
-        
-        Usage:
-            predictor = ToxicityPredictor('models/cyberbullying_model.onnx')
+            cache_size: Number of recent predictions to cache.
+
+        Raises:
+            RuntimeError: If model download or initialization fails.
         """
-        if not os.path.exists(model_path):
-            raise FileNotFoundError(f"Model file not found at {model_path}")
-        
-        self.session = ort.InferenceSession(
-            model_path,
-            providers=['CUDAExecutionProvider', 'CPUExecutionProvider']
-        )
-        self.tokenizer = AutoTokenizer.from_pretrained('distilbert-base-uncased')
-        self.cache = {}
-        self.cache_size = cache_size
+        try:
+            model_path = hf_hub_download(
+                repo_id='karthikarunr/BullyGuard',
+                filename='cyberbullying_model.onnx'
+            )
+            
+            self.session = ort.InferenceSession(
+                model_path,
+                providers=['CUDAExecutionProvider', 'CPUExecutionProvider']
+            )
+            self.tokenizer = AutoTokenizer.from_pretrained('distilbert-base-uncased')
+            self.cache = {}
+            self.cache_size = cache_size
+            
+        except Exception as e:
+            raise RuntimeError(f"Failed to initialize model: {str(e)}")
         
     def predict(self, text: str) -> Tuple[bool, float]:
         """
