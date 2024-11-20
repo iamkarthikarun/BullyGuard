@@ -87,7 +87,8 @@ I'd love to make this a public bot, but:
 
 So here's how you can run your own version instead:
 ### Quick Setup
-1. Environment Setup
+
+**1. Environment Setup**
 
   - First, get your Python environment ready:
     - Make sure you have Python 3.10+ installed
@@ -106,7 +107,8 @@ So here's how you can run your own version instead:
         ```bash
         pip install -r requirements.txt
         ```
-2. Discord Bot Creation
+**2. Discord Bot Creation**
+
   - Head over to Discord Developer Portal (https://discord.com/developers/applications):
 
     - Click "New Application"
@@ -118,7 +120,8 @@ So here's how you can run your own version instead:
         - Server Members Intent
         - Presence Intent
 
-3. Bot Permissions
+**3. Bot Permissions**
+
   - Your bot needs some powers:
     - In the Developer Portal, go to "OAuth2" → "URL Generator"
     - Select these scopes:
@@ -135,14 +138,14 @@ So here's how you can run your own version instead:
         - Select your server
         - Authorize the bot
 
-4. Server Setup
+**4. Server Setup**
 
   - In your Discord server:
     - Create a channel for mod logs (like #moderator-logs)
     - Right click → Copy Channel ID
     - Make sure bot's role is ABOVE the roles it needs to moderate
 
-5. Configuration
+**5. Configuration**
 
   - Create a .env file in the project root:
 ```yml
@@ -156,7 +159,7 @@ toxicity_threshold: 0.75  # Higher = less sensitive
 warning_threshold: 3      # Strikes before timeout
 cache_size: 1000         # Increase if you have RAM to spare
 ```
-6. Running the Bot
+**6. Running the Bot**
 
   - Activate your virtual environment (if not already active)
     ```bash
@@ -164,7 +167,7 @@ cache_size: 1000         # Increase if you have RAM to spare
     ```
   - You should see "Bot is ready!" and your bot should be online
 
-7. Testing
+**7. Testing**
 
   - Try these to make sure everything works:
     - /check command with a test message
@@ -194,5 +197,6 @@ For the ADOPT optimizer
 
 ## Contact
 If you wanna talk over this repo or any of my work or click some heads in Counter-Strike:
-Discord: hawkeye2704
-Email: karthikarun2000@gmail.com
+
+- Discord: hawkeye2704
+- Email: karthikarun2000@gmail.com
