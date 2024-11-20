@@ -1,0 +1,11 @@
+auto_delete: true
+batch_size: 1
+cache_size: 1000
+cache_timeout: 3600
+deletion_message: "\U0001F6AB Your message was removed due to toxic content."
+dm_warnings: true
+include_confidence: false
+log_channel: null
+toxicity_threshold: 0.5
+warning_message: "\u26A0\uFE0F Your message was flagged as potentially toxic."
+warning_threshold: 3
