@@ -16,7 +16,7 @@ Quite simple - bot catches toxic stuff, and instead of just flagging stuff, it's
 So I started with [this](https://www.kaggle.com/datasets/saurabhshahane/cyberbullying-dataset) dataset from Kaggle - it has multiple files which I squashed together and added a private dataset of mine on top. You can find the complete dataset [here](https://www.kaggle.com/datasets/hawkeye2704/cyberbullying-dataset). It's quite extensive with labels saying if they're toxic or not. About 15% are toxic which is pretty much what you'd expect in real life.
 ### The Model
 - Went with DistilBERT because:
-  - BERT was overkill (and my GPU was crying)
+  - BERT was overkill
   - Needed something fast for real-time checks
   - Still smart enough to catch the nasty stuff
 - Added my own model architecture (simple one tbf!) downstream to the DistilBERT
